@@ -1,0 +1,39 @@
+.container div {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+main {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+main .note-container {
+    width: max-content;
+    padding: 15px;
+    background-color: #fff;
+    width: 550px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr 1fr;
+}
+
+main .note-container .actions {
+    margin-left: auto;
+    cursor: pointer;
+}
+
+main .note-container .actions .edit {
+    color: green;
+}
+
+main .note-container .actions .delete {
+    color: crimson;
+}
+
+main .note-container .actions .disabled {
+    cursor: not-allowed;
+    color: #b0a6a6;
+}

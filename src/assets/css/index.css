@@ -1,0 +1,49 @@
+@import url('./app.css');
+
+body {
+    background-color: rgb(243 243 243);
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
+.container {
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+   justify-content: center;
+   align-items: center;
+   min-height: 80vh;
+}
+
+.container header {
+    font-size: 24px;
+}
+
+.container main form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+.container input[type=text], 
+.container input[type=password],
+.container input[type=email] {
+    min-width: 400px;
+    padding: 10px 15px;
+    font-size: 14px;
+    outline: none;
+}
+
+.container input[type=submit] {
+   align-self: flex-start;
+}
+
+.container .register-cta {
+    margin-top: 40px;
+}
+
+.container .register-cta .cta {
+    font-weight: 600;
+}

@@ -1,0 +1,49 @@
+nav {
+    padding: 15px 20px;
+    background-color: rgb(27, 31, 44);
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    align-items: center;
+}
+
+nav ul, nav ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: #fff;
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-left: 40px;
+    cursor: pointer;
+    align-items: center;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 20px;
+    
+}
+
+nav a:active {
+    color: rgba(10, 10, 140, 0.462);
+}
+
+nav .active {
+    color: #d7cfcf;
+}
+
+nav .profile {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+nav .right {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+}

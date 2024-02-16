@@ -1,0 +1,138 @@
+@import url('nav.css');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.roboto-thin {
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+  }
+  
+  .roboto-light {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .roboto-regular {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .roboto-medium {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .roboto-bold {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .roboto-black {
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  .roboto-thin-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: italic;
+  }
+  
+  .roboto-light-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+  }
+  
+  .roboto-regular-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  .roboto-medium-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+  }
+  
+  .roboto-bold-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+  
+  .roboto-black-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+    font-style: italic;
+  }
+  
+
+.btn {
+    padding: 12px 25px;
+    text-transform: uppercase;
+    cursor: pointer;
+    max-width: max-content;
+}
+
+.btn-primary {
+    background-color: #fff;
+    border: 2px solid #000;
+    outline: none;
+}
+
+.btn-primary:hover {
+    background-color: rgb(34, 34, 146);
+    color: white;
+}
+
+.btn-secondary {
+  background-color: #212f9a;
+  outline: none;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: rgb(18, 122, 49);
+  color: white;
+  box-shadow: unset;
+}
+
+.cta {
+    outline: none;
+    text-decoration: none;
+    color: #000;
+}
+
+.flashMessage {
+    min-width: 400px;
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 50px;
+    align-self: flex-start;
+}
+
+.flashMessage .success {
+    display: flex;
+    width: inherit;
+    background-color: green;
+    color: #f4ecec;
+    padding: 10px 30px;
+}
+
+.flashMessage .error {
+    background-color: crimson;
+    width: inherit;
+    padding: 10px 30px;
+}
