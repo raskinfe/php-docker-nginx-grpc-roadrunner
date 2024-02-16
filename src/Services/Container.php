@@ -27,33 +27,4 @@ class Container {
         return call_user_func($resolver); 
     }
 
-    // private static $instances = [];
-
-    // public function set(string $key, $value) {
-    //     self::$instances[$key] = $value;
-    // }
-
-    // static function get(string $key, $args=null) { 
-    //     if (array_key_exists($key, Container::$instances)) {
-    //         return Container::$instances[$key];
-    //     }
-
-    //     $className = ucfirst($key);
-    //     if (class_exists($className)) {
-    //         $reflector = new \ReflectionClass($className);
-
-    //         $constructor = $reflector->getConstructor();
-
-    //         if ($constructor && $constructor->getParameters()) {
-    //             $instance = $reflector->newInstanceArgs($args);
-    //         } else {
-    //             $instance = new $className;
-    //         }
-
-    //         return Container::$instances[$key] = $instance;
-    //     }
-
-    //     throw new \Exception("Class not found");
-    // }
-
 }
