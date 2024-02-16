@@ -6,54 +6,26 @@ use App\Core\Request;
 use Doctrine\ORM\EntityManager;
 use App\Models\User;
 use App\Core\App;
+use App\Core\Validators\Validator;
 use App\Services\View;
 
 class LoginController extends BaseController {
 
     public function authenticate(EntityManager $entityManager, Request $request) {
-        $user = $entityManager->getRepository(User::class)->findOneBy(['username'=> $request->get('username')]);
-        if (!$user) { 
-            return View::make(path: 'login', args: [
-                'title' => 'Signup page',
-                'errors' => [
-                    'username' => $request->get('username'),
-                    'body' => 'wrong username'
-                ],
-                'request' => App::resolve(Request::class)->getAll(),
-            ]);
-        }
+        $user = $entityManager->getRepository(User::class)->findOneBy(["username"=> $request->get("username")]);
+        $errors = (new Validator)->validate(array_merge($request->getAll(), ['user' => $user]), 'login');
 
-
-        if (!password_verify($request->get('password'), $user->getPassword())) {
-            return View::make(path: 'login', args: [
-                'title' => 'Signup page',
-                'errors' => [
-                    'password' => $request->get('password'),
-                    'body' => 'wrong password'
-                ],
+        if (count($errors) > 0) {
+            return View::make('login', [
+                'title' => 'Login',
+                'errors' => $errors,
                 'request' => App::resolve(Request::class)->getAll(),
             ]);
         }
 
         setActiveUser($user);
-        
+        session_regenerate_id(true);
         $this->redirect(to: '/');
-    }
-
-    private function validateUser(User $user, EntityManager $entityManager) {
-        $existing = $entityManager->getRepository(User::class)
-        ->findOneBy(['username' => $user->getUsername()]);
-        
-        if(!empty($existing)) { 
-            throw new \Exception('Username is taken. please choose a different one');
-        }
-
-        $existing = $entityManager->getRepository(User::class)
-        ->findOneBy(['email' => $user->getEmail()]);
-
-        if(!empty($existing)) { 
-            throw new \Exception('This email address is registered with us.');
-        }
     }
 
     public function store(EntityManager $entityManager, Request $request) {
@@ -69,7 +41,15 @@ class LoginController extends BaseController {
             $user->setUsername($username);
             $user->setEmail($email);
 
-            $this->validateUser(user: $user, entityManager: $entityManager);
+            $errors = (new Validator)->validate(array_merge($request->getAll(), ['user' => $user, 'entityManager' => $entityManager]), 'register');
+
+            if (count($errors) > 0) {
+                return View::make('register', [
+                    'title' => 'Login',
+                    'errors' => $errors,
+                    'request' => App::resolve(Request::class)->getAll(),
+                ]);
+            }
 
             $hash = password_hash($password, PASSWORD_BCRYPT);
             $user->setPassword($hash);

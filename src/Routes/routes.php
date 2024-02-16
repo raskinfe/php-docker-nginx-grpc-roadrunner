@@ -3,7 +3,7 @@
 use App\Controllers\HomeController;
 use App\Controllers\LoginController;
 use App\Controllers\NoteController;
-use App\Services\Router;
+use App\Core\Router;
 use App\Services\View;
 
 $router = new Router();
@@ -28,6 +28,8 @@ $router->get("/contact", function() {
 })->only('auth');
 $router->get("/logout", function() {
     session_unset();
+    $params = session_get_cookie_params();
+    setcookie(session_name(),"", time() - 3600, $params['path']);
     return View::make("index", ["title"=> "Home"]);
 })->only('auth');
 $router->get("/404", function() {

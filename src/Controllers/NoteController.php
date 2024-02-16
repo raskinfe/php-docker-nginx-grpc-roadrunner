@@ -13,6 +13,7 @@ class NoteController extends BaseController {
     {
         $notes = $em->getRepository(Note::class)->findAll() ?? [];
         return View::make("notes.notes", [
+            'title' => 'Notes',
             'notes' => $notes
         ]);
     }
@@ -24,6 +25,7 @@ class NoteController extends BaseController {
             $id = $request->get('id');
             $note = $em->getRepository(Note::class)->find($id);
             return View::make("notes.edit", [
+                "title"=> 'Edit note',
                 'note' => $note
             ]);
 
@@ -65,6 +67,7 @@ class NoteController extends BaseController {
 
             if (currentUser()->getId() !== $note->getAuthor()->getId()) { 
                 return View::make('notes.notes', [
+                    'title' => 'Notes',
                     'error' => 'Permission denied',
                 ]);
             }
@@ -96,6 +99,7 @@ class NoteController extends BaseController {
 
             if (currentUser()->getId() !== $note->getAuthor()->getId()) { 
                 return View::make('notes.notes', [
+                    'title' => 'Notes',
                     'error' => 'Permission denied',
                 ]);
             }
