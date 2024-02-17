@@ -32,8 +32,8 @@ $router->get("/404", function() {
     return View::make("404", ["title"=> "Not found"]);
 });
 
-$uri = explode('?', $_SERVER['REQUEST_URI'])[0];
-$method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
+$requestUri = explode('?', $_SERVER['REQUEST_URI'])[0];
+$requestMethod = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'] ?? '';
+setActiveLink($requestUri);
+$router->route($requestUri, $requestMethod);
 
-setActiveLink($uri);
-$router->route($uri, $method);

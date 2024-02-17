@@ -14,6 +14,10 @@
     "require": {
         "doctrine/orm": "^3",
         "doctrine/dbal": "^4",
-        "symfony/cache": "^7"
+        "symfony/cache": "^7",
+        "spiral/roadrunner-http": "^3.4",
+        "spiral/roadrunner-jobs": "^4.3",
+        "nyholm/psr7": "^1.8",
+        "spiral/roadrunner-cli": "^2.6"
     }
 }

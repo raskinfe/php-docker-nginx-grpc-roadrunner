@@ -11,7 +11,9 @@ class NoteController extends BaseController {
 
     public function index(EntityManager $em) 
     {
-        $notes = $em->getRepository(Note::class)->findAll() ?? [];
+        $dql = 'SELECT n FROM App\Models\Note n ORDER BY n.date DESC';
+        $query = $em->createQuery($dql);
+        $notes = $query->getResult();
         return View::make("notes.notes", [
             'title' => 'Notes',
             'notes' => $notes
